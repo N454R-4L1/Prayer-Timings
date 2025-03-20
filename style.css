@@ -3,12 +3,17 @@
 :root {
   --primary-color: #f1f2f6;
   --accent-color: #00cec9;
-  --bg-color: #2f3640;
-  --card-bg: #353b48;
+  --bg-color: #1e272e;
+  --card-bg: #2f3640;
   --text-color: #f1f2f6;
-  --secondary-text: #7f8fa6;
+  --secondary-text: #a4b0be;
   --highlight-color: #00cec9;
-  --hover-bg: #4e5a6b;
+  --hover-bg: #57606f;
+  --completed-color: #2ecc71;
+  --remaining-color: #00cec9;
+  --tomorrow-color: #9c88ff;
+  --border-radius: 16px;
+  --transition-speed: 0.3s;
 }
 
 body {
@@ -20,68 +25,105 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding: 20px;
 }
 
 .container {
   background-color: var(--card-bg);
   padding: 40px 32px;
-  border-radius: 16px;
+  border-radius: var(--border-radius);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-  max-width: 400px;
+  max-width: 480px; /* Updated from 380px to 480px */
   width: 100%;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all var(--transition-speed) ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 h1 {
-  font-size: 2.5rem; /* Extra large */
+  font-size: 2rem;
   color: var(--highlight-color);
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   font-weight: 700;
 }
 
 h3 {
-  font-size: 1.25rem; /* Medium */
-  color: var(--primary-color);
-  margin-bottom: 20px;
+  font-size: 1rem;
+  color: var(--secondary-text);
+  margin-bottom: 24px;
   font-weight: 500;
 }
 
 h2 {
-  font-size: 1rem; /* Small */
-  color: var(--secondary-text);
+  font-size: 1rem;
   margin-bottom: 12px;
-  font-weight: 500;
+  font-weight: 600;
   text-align: left;
 }
 
-.tomorrow {
-  margin-top: 24px;
-  text-align: left;
+.completed-salah h2 {
+  color: var(--completed-color);
 }
 
-.tomorrow ul {
+.remaining-salah h2 {
+  color: var(--remaining-color);
+}
+
+.tomorrow-salah h2 {
+  color: var(--tomorrow-color);
+}
+
+ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.tomorrow li {
+li {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #404b5a;
   color: var(--primary-color);
   font-size: 1rem;
-  padding: 12px 16px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  transition: background-color var(--transition-speed) ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.tomorrow li:hover {
+li:hover {
   background-color: var(--hover-bg);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.completed-salah li {
+  background-color: rgba(46, 204, 113, 0.15);
+  color: var(--completed-color);
+}
+
+.completed-salah li:hover {
+  background-color: rgba(46, 204, 113, 0.25);
+}
+
+.remaining-salah li {
+  background-color: rgba(0, 206, 201, 0.15);
+  color: var(--remaining-color);
+}
+
+.remaining-salah li:hover {
+  background-color: rgba(0, 206, 201, 0.25);
+}
+
+.tomorrow-salah li {
+  background-color: rgba(156, 136, 255, 0.15);
+  color: var(--tomorrow-color);
+}
+
+.tomorrow-salah li:hover {
+  background-color: rgba(156, 136, 255, 0.25);
 }
 
 label {
@@ -89,24 +131,54 @@ label {
   font-size: 0.85rem;
 }
 
+.next-salah {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--highlight-color);
+  text-align: center;
+  margin: 0 auto 24px auto;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  max-width: 300px;
+  width: 100%;
+  padding: 12px 16px;
+  background-color: rgba(0, 206, 201, 0.1);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all var(--transition-speed) ease;
+}
+
+.next-salah:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive for mobile screens */
 @media (max-width: 500px) {
   .container {
+    max-width: 100%; /* Full width on mobile */
     padding: 32px 24px;
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   h2 {
     font-size: 0.95rem;
   }
 
-  .tomorrow li {
+  li {
     font-size: 0.95rem;
+    padding: 12px 16px;
+  }
+
+  .next-salah {
+    max-width: 100%;
+    padding: 12px;
   }
 }
